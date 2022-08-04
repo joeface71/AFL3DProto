@@ -3,6 +3,8 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody))]
 public class AgentMovement : MonoBehaviour
 {
+    [SerializeField] private GameObject ball;
+
     protected Rigidbody rb;
 
     [field: SerializeField]
@@ -50,5 +52,10 @@ public class AgentMovement : MonoBehaviour
     {
         rb.velocity = currentVelocity * movementDirection.normalized;
     }
+
+    //public void AimAtMouseWorldPosition(Vector3 hitPoint)
+    //{
+    //    //Debug.Log(hitPoint);
+    //}
 
 }
