@@ -124,10 +124,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2068064633405743111}
-  - component: {fileID: 2068064633405743110}
   - component: {fileID: 2068064633405743161}
-  - component: {fileID: 2068064633405743160}
-  - component: {fileID: 1155361250}
+  - component: {fileID: 4719415267365324747}
+  - component: {fileID: 2069298815871882532}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -154,22 +153,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2068064633405743110
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2068064633405743109}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 78ffb7af87e00844fbecd77b1bca8357, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  jumpSpeed: 8
-  gravity: 20
-  speed: 20
-  ballPossessionTransform: {fileID: 0}
 --- !u!54 &2068064633405743161
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -182,42 +165,50 @@ Rigidbody:
   m_Drag: 2
   m_AngularDrag: 0.05
   m_UseGravity: 0
-  m_IsKinematic: 1
+  m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 116
   m_CollisionDetection: 0
---- !u!136 &2068064633405743160
-CapsuleCollider:
+--- !u!114 &4719415267365324747
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2068064633405743109}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.88804454
-  m_Height: 4.089284
-  m_Direction: 1
-  m_Center: {x: 0.014500558, y: 2.4885106, z: 0}
---- !u!143 &1155361250
-CharacterController:
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7680467ed3813034bb7826a1847337d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <OnMovementKeyPressed>k__BackingField:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2069298815871882532}
+        m_TargetAssemblyTypeName: AgentMovement, Assembly-CSharp
+        m_MethodName: MoveAgent
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &2069298815871882532
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2068064633405743109}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Height: 4
-  m_Radius: 1
-  m_SlopeLimit: 45
-  m_StepOffset: 0.3
-  m_SkinWidth: 0.08
-  m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 2.62, z: 0}
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed4f29a2c517d2b478c06b8970f74ab4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentVelocity: 10
 --- !u!1 &2068064633769190838
 GameObject:
   m_ObjectHideFlags: 0
