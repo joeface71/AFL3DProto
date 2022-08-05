@@ -4,12 +4,17 @@ public class BallInteraction : MonoBehaviour
 {
     [SerializeField] private Transform ballPossessionTransform;
     [SerializeField] private Transform ballPossessionPivotTransform;
-    [SerializeField] private Transform ball;
+    public GameObject ball;
     [SerializeField][Range(1f, 50f)] private float kickForce = 20f;
     [SerializeField][Range(1f, 20f)] private float elevationMultiplier = 5f;
 
     private bool hasPossession;
     private Vector3 ballHitPoint;
+
+    private void Start()
+    {
+        ball = GameObject.FindGameObjectWithTag("Ball");
+    }
 
 
     private void OnCollisionEnter(Collision collision)
@@ -17,10 +22,10 @@ public class BallInteraction : MonoBehaviour
         if (collision.gameObject.tag == "Ball")
         {
             hasPossession = true;
-            ball.parent = ballPossessionTransform;
-            ball.position = ballPossessionTransform.position;
+            ball.transform.parent = ballPossessionTransform;
+            ball.transform.position = ballPossessionTransform.position;
             ball.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
-            ball.eulerAngles = new Vector3(0, 0, 60);
+            ball.transform.eulerAngles = new Vector3(0, 0, 60);
         }
     }
 
@@ -41,12 +46,12 @@ public class BallInteraction : MonoBehaviour
             Vector3 direction = (ballHitPoint - transform.position + elevation).normalized;
 
 
-            ball.parent = null;
+            ball.transform.parent = null;
             Rigidbody ballRB = ball.GetComponent<Rigidbody>();
             ballRB.constraints = RigidbodyConstraints.None;
 
             Vector3 kickPointOffset = new Vector3(0, 0.2f, 0);
-            ballRB.AddForceAtPosition(direction * kickForce, ball.position - kickPointOffset, ForceMode.Impulse);
+            ballRB.AddForceAtPosition(direction * kickForce, ball.transform.position - kickPointOffset, ForceMode.Impulse);
 
             hasPossession = false;
         }

@@ -1,18 +1,13 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class GoalManager : MonoBehaviour
+public class GoalManager : SingletonMonobehaviour<GoalManager>
 {
-    // Start is called before the first frame update
-    void Start()
+
+    public void AddToScore(int points)
     {
-        
+        Debug.Log(points);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+
+
 }
