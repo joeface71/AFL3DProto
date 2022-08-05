@@ -232,10 +232,25 @@ MonoBehaviour:
   <OnPointerPositionChanged>k__BackingField:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2069298815871882532}
-        m_TargetAssemblyTypeName: AgentMovement, Assembly-CSharp
-        m_MethodName: AimAtMouseWorldPosition
+      - m_Target: {fileID: 1113777906}
+        m_TargetAssemblyTypeName: BallInteraction, Assembly-CSharp
+        m_MethodName: PointBallAtRayHitPoint
         m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  <OnKickButtonClicked>k__BackingField:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1113777906}
+        m_TargetAssemblyTypeName: BallInteraction, Assembly-CSharp
+        m_MethodName: KickBall
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -273,7 +288,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ballPossessionTransform: {fileID: 7128740149206702134}
+  ballPossessionPivotTransform: {fileID: 5475385847179902003}
   ball: {fileID: 0}
+  kickForce: 20
+  elevationMultiplier: 5
 --- !u!1 &2068064633769190838
 GameObject:
   m_ObjectHideFlags: 0
@@ -417,7 +435,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ballPossessionTransform: {fileID: 7128740149206702134}
+  ballPossessionPivotTransform: {fileID: 0}
   ball: {fileID: 0}
+  kickForce: 20
+  elevationMultiplier: 5
 --- !u!1 &5314732552553460016
 GameObject:
   m_ObjectHideFlags: 0

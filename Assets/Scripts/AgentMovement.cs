@@ -23,9 +23,9 @@ public class AgentMovement : MonoBehaviour
         if (movementInput.magnitude > 0)
         {
             movementDirection = movementInput;
+            RotateAgent(movementDirection);
         }
 
-        RotateAgent(movementDirection);
         currentVelocity = CalculateSpeed(movementInput);
     }
 
@@ -53,9 +53,6 @@ public class AgentMovement : MonoBehaviour
         rb.velocity = currentVelocity * movementDirection.normalized;
     }
 
-    //public void AimAtMouseWorldPosition(Vector3 hitPoint)
-    //{
-    //    //Debug.Log(hitPoint);
-    //}
+
 
 }

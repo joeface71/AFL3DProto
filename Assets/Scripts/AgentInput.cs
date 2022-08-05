@@ -13,6 +13,9 @@ public class AgentInput : MonoBehaviour
     [field: SerializeField]
     public UnityEvent<Vector3> OnPointerPositionChanged { get; set; }
 
+    [field: SerializeField]
+    public UnityEvent OnKickButtonClicked { get; set; }
+
     private void Awake()
     {
         mainCamera = Camera.main;
@@ -22,6 +25,15 @@ public class AgentInput : MonoBehaviour
     {
         GetMovementInput();
         GetPointerInput();
+        GetKickInput();
+    }
+
+    private void GetKickInput()
+    {
+        if (Input.GetMouseButtonDown(0))
+        {
+            OnKickButtonClicked?.Invoke();
+        }
     }
 
     private void GetPointerInput()
