@@ -6,7 +6,7 @@ public class BallInteraction : MonoBehaviour
     [SerializeField] private Transform ballPossessionPivotTransform;
     private GameObject ball;
     [SerializeField][Range(1f, 20f)] private float elevationMultiplier = 5f;
-    [SerializeField][Range(0, 100)] private float maxForce = 50;
+    [SerializeField] PlayerDataSO PlayerData;
 
     public bool hasPossession;
     private Vector3 mouseLookHitPoint;
@@ -49,7 +49,7 @@ public class BallInteraction : MonoBehaviour
             ballRB.constraints = RigidbodyConstraints.None;
 
             Vector3 kickPointOffset = new Vector3(0, 0.2f, 0);
-            ballRB.AddForceAtPosition(direction * kickButtonHoldDownTimeNormalized * maxForce, ball.transform.position - kickPointOffset, ForceMode.Impulse);
+            ballRB.AddForceAtPosition(direction * kickButtonHoldDownTimeNormalized * PlayerData.maxForce, ball.transform.position - kickPointOffset, ForceMode.Impulse);
 
             hasPossession = false;
         }

@@ -39,13 +39,6 @@ public class AgentInput : MonoBehaviour
         GetKickInput();
     }
 
-    //private void GetKickInput()
-    //{
-    //    if (Input.GetMouseButtonDown(0))
-    //    {
-    //        OnKickButtonClicked?.Invoke();
-    //    }
-    //}
     private void GetKickInput()
     {
         if (Input.GetMouseButtonDown(0))

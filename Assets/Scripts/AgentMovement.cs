@@ -8,7 +8,7 @@ public class AgentMovement : MonoBehaviour
     protected Rigidbody rb;
 
     [field: SerializeField]
-    public MovementDataSO MovementData { get; set; }
+    public PlayerDataSO PlayerData { get; set; }
 
     [SerializeField] protected float currentVelocity = 3f;
     protected Vector3 movementDirection;
@@ -38,13 +38,13 @@ public class AgentMovement : MonoBehaviour
     {
         if (movementInput.magnitude > 0)
         {
-            currentVelocity += MovementData.acceleration * Time.deltaTime;
+            currentVelocity += PlayerData.acceleration * Time.deltaTime;
         }
         else
         {
-            currentVelocity -= MovementData.deacceleration * Time.deltaTime;
+            currentVelocity -= PlayerData.deacceleration * Time.deltaTime;
         }
-        return Mathf.Clamp(currentVelocity, 0f, MovementData.maxSpeed);
+        return Mathf.Clamp(currentVelocity, 0f, PlayerData.maxSpeed);
     }
 
 
