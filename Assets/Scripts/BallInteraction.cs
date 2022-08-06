@@ -5,7 +5,6 @@ public class BallInteraction : MonoBehaviour
     [SerializeField] private Transform ballPossessionTransform;
     [SerializeField] private Transform ballPossessionPivotTransform;
     public GameObject ball;
-    [SerializeField][Range(1f, 50f)] private float kickForce = 20f;
     [SerializeField][Range(1f, 20f)] private float elevationMultiplier = 5f;
 
     private bool hasPossession;
@@ -15,7 +14,6 @@ public class BallInteraction : MonoBehaviour
     {
         ball = GameObject.FindGameObjectWithTag("Ball");
     }
-
 
     private void OnCollisionEnter(Collision collision)
     {
@@ -38,13 +36,12 @@ public class BallInteraction : MonoBehaviour
         }
     }
 
-    public void KickBall()
+    public void KickBall(float kickForce)
     {
         if (hasPossession)
         {
             Vector3 elevation = Vector3.up * elevationMultiplier;
             Vector3 direction = (ballHitPoint - transform.position + elevation).normalized;
-
 
             ball.transform.parent = null;
             Rigidbody ballRB = ball.GetComponent<Rigidbody>();
