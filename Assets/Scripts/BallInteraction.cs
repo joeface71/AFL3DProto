@@ -4,7 +4,7 @@ public class BallInteraction : MonoBehaviour
 {
     [SerializeField] private Transform ballPossessionTransform;
     [SerializeField] private Transform ballPossessionPivotTransform;
-    public GameObject ball;
+    private GameObject ball;
     [SerializeField][Range(1f, 20f)] private float elevationMultiplier = 5f;
     [SerializeField][Range(0, 100)] private float maxForce = 50;
 
