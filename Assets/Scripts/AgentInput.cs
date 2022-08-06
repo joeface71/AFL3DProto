@@ -3,7 +3,7 @@ using UnityEngine.Events;
 
 public class AgentInput : MonoBehaviour
 {
-
+    private GameObject player;
 
     private Camera mainCamera;
 
@@ -20,11 +20,16 @@ public class AgentInput : MonoBehaviour
     public UnityEvent<float> OnKickButtonHeldDown { get; set; }
 
     private float holdDownStartTime;
-    [SerializeField][Range(0, 100)] private float maxForce = 50;
+
 
     private void Awake()
     {
         mainCamera = Camera.main;
+    }
+
+    private void Start()
+    {
+        player = GameObject.FindGameObjectWithTag("Player");
     }
 
     private void Update()
@@ -45,30 +50,38 @@ public class AgentInput : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            holdDownStartTime = Time.time;
+            if (player.GetComponent<BallInteraction>().hasPossession)
+            {
+                holdDownStartTime = Time.time;
+            }
         }
 
         if (Input.GetMouseButtonUp(0))
         {
-            float holdDownTime = Time.time - holdDownStartTime;
-            OnKickButtonReleased?.Invoke(CalculateHoldDownForce(holdDownTime));
+            if (player.GetComponent<BallInteraction>().hasPossession)
+            {
+                float holdDownTime = Time.time - holdDownStartTime;
+                OnKickButtonReleased?.Invoke(CalculateHoldTimeNormalized(holdDownTime));
+            }
         }
 
         if (Input.GetMouseButton(0))
         {
-            float holdDownTime = Time.time - holdDownStartTime;
-            OnKickButtonHeldDown?.Invoke(CalculateHoldDownForce(holdDownTime));
+            if (player.GetComponent<BallInteraction>().hasPossession)
+            {
+                float holdDownTime = Time.time - holdDownStartTime;
+                OnKickButtonHeldDown?.Invoke(CalculateHoldTimeNormalized(holdDownTime));
+            }
         }
 
 
     }
 
-    private float CalculateHoldDownForce(float holdTime)
+    private float CalculateHoldTimeNormalized(float holdTime)
     {
         float maxForceHoldDownTime = 2f;
         float holdTimeNormalized = Mathf.Clamp01(holdTime / maxForceHoldDownTime);
-        float force = holdTimeNormalized * maxForce;
-        return force;
+        return holdTimeNormalized;
 
     }
 

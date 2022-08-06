@@ -6,9 +6,10 @@ public class BallInteraction : MonoBehaviour
     [SerializeField] private Transform ballPossessionPivotTransform;
     public GameObject ball;
     [SerializeField][Range(1f, 20f)] private float elevationMultiplier = 5f;
+    [SerializeField][Range(0, 100)] private float maxForce = 50;
 
-    private bool hasPossession;
-    private Vector3 ballHitPoint;
+    public bool hasPossession;
+    private Vector3 mouseLookHitPoint;
 
     private void Start()
     {
@@ -29,26 +30,26 @@ public class BallInteraction : MonoBehaviour
 
     public void PointBallAtRayHitPoint(Vector3 hitPoint)
     {
-        ballHitPoint = hitPoint;
+        mouseLookHitPoint = hitPoint;
         if (hasPossession)
         {
-            ballPossessionPivotTransform.LookAt(ballHitPoint);
+            ballPossessionPivotTransform.LookAt(mouseLookHitPoint);
         }
     }
 
-    public void KickBall(float kickForce)
+    public void KickBall(float kickButtonHoldDownTimeNormalized)
     {
         if (hasPossession)
         {
             Vector3 elevation = Vector3.up * elevationMultiplier;
-            Vector3 direction = (ballHitPoint - transform.position + elevation).normalized;
+            Vector3 direction = (mouseLookHitPoint - transform.position + elevation).normalized;
 
             ball.transform.parent = null;
             Rigidbody ballRB = ball.GetComponent<Rigidbody>();
             ballRB.constraints = RigidbodyConstraints.None;
 
             Vector3 kickPointOffset = new Vector3(0, 0.2f, 0);
-            ballRB.AddForceAtPosition(direction * kickForce, ball.transform.position - kickPointOffset, ForceMode.Impulse);
+            ballRB.AddForceAtPosition(direction * kickButtonHoldDownTimeNormalized * maxForce, ball.transform.position - kickPointOffset, ForceMode.Impulse);
 
             hasPossession = false;
         }
