@@ -7,8 +7,9 @@ public class GameManager : SingletonMonobehaviour<GameManager>
     private GameObject ballInstance;
     private Rigidbody rb;
     // Start is called before the first frame update
-    void Start()
+    protected override void Awake()
     {
+        base.Awake();
         InstantiateBall();
     }
 

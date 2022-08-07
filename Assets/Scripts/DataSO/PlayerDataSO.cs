@@ -3,6 +3,10 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Agent/PlayerData")]
 public class PlayerDataSO : ScriptableObject
 {
+    public int ID;
+
+    public string Name;
+
     [Range(0f, 10f)]
     public float maxSpeed = 5f;
 
