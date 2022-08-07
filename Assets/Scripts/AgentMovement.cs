@@ -36,6 +36,8 @@ public class AgentMovement : MonoBehaviour
         currentVelocity = CalculateSpeed(movementInput);
     }
 
+
+
     protected void RotateAgent(Vector3 movementDirection)
     {
         transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(movementDirection), 0.15f);

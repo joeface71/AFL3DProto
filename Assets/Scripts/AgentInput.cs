@@ -37,6 +37,10 @@ public class AgentInput : MonoBehaviour
             GetPointerInput();
             GetKickInput();
         }
+        else
+        {
+            player.GetComponent<AgentMovement>().MoveAgent(Vector3.zero);
+        }
     }
 
     private void GetKickInput()

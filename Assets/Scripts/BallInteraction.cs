@@ -1,7 +1,11 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 public class BallInteraction : MonoBehaviour
 {
+    [field: SerializeField]
+    public UnityEvent<int> OnPossessionGained { get; set; }
+
     [SerializeField] private Transform ballPossessionTransform;
     [SerializeField] private Transform ballPossessionPivotTransform;
     private GameObject ball;
@@ -26,6 +30,7 @@ public class BallInteraction : MonoBehaviour
             ball.transform.position = ballPossessionTransform.position;
             ball.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
             ball.transform.eulerAngles = new Vector3(0, 0, 60);
+            OnPossessionGained?.Invoke(player.PlayerData.ID);
         }
     }
 

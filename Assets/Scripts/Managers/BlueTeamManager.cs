@@ -19,4 +19,20 @@ public class BlueTeamManager : MonoBehaviour
             }
         }
     }
+
+    public void SetActivePlayer(int playerID)
+    {
+        foreach (Player player in teamList)
+        {
+            if (player.PlayerData.ID == playerID)
+            {
+                player.GetComponent<AgentInput>().isActivePlayer = true;
+            }
+            else
+            {
+                player.GetComponent<AgentInput>().isActivePlayer = false;
+
+            }
+        }
+    }
 }
