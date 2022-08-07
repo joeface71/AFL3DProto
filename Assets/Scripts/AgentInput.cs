@@ -4,7 +4,7 @@ using UnityEngine.Events;
 public class AgentInput : MonoBehaviour
 {
     [SerializeField] private GameObject player;
-    [SerializeField] private bool isActivePlayer = false;
+    public bool isActivePlayer = false;
 
     private Camera mainCamera;
 
