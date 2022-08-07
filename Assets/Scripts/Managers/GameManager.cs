@@ -1,8 +1,10 @@
+using Cinemachine;
 using UnityEngine;
 
 public class GameManager : SingletonMonobehaviour<GameManager>
 {
     [SerializeField] private GameObject ballPrefab;
+    [SerializeField] private CinemachineVirtualCamera virtualCamera;
 
     private GameObject ballInstance;
     private Rigidbody rb;
@@ -17,6 +19,7 @@ public class GameManager : SingletonMonobehaviour<GameManager>
     {
         ballInstance = Instantiate(ballPrefab, Vector3.zero, Quaternion.identity);
         rb = ballInstance.GetComponent<Rigidbody>();
+        virtualCamera.Follow = ballInstance.transform;
     }
 
     public void MoveBallBackToCenterCircle(int points)
