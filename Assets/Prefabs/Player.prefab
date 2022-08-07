@@ -232,6 +232,7 @@ MonoBehaviour:
   ballPossessionTransform: {fileID: 7128740149206702134}
   ballPossessionPivotTransform: {fileID: 5475385847179902003}
   elevationMultiplier: 10.63
+  player: {fileID: -8972258781456199967}
   hasPossession: 0
 --- !u!114 &187093579
 MonoBehaviour:
@@ -245,6 +246,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7680467ed3813034bb7826a1847337d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 0}
   <OnMovementKeyPressed>k__BackingField:
     m_PersistentCalls:
       m_Calls:
@@ -306,14 +308,13 @@ MonoBehaviour:
   <OnKickButtonHeldDown>k__BackingField:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 9135675301506851655, guid: eebf4819a4d58d948aaacff6b964a6bc,
-          type: 3}
-        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
-        m_MethodName: FillKickMeter
-        m_Mode: 0
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgumentAssemblyTypeName: 
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -477,6 +478,7 @@ MonoBehaviour:
   ballPossessionTransform: {fileID: 7128740149206702134}
   ballPossessionPivotTransform: {fileID: 0}
   elevationMultiplier: 5
+  player: {fileID: 0}
   hasPossession: 0
 --- !u!1 &5314732552553460016
 GameObject:

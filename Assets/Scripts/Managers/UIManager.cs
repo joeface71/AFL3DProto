@@ -7,6 +7,7 @@ public class UIManager : SingletonMonobehaviour<UIManager>
     [SerializeField] private Canvas mainUIPrefab;
     [SerializeField] private Slider slider;
 
+
     public void FillKickMeter(float holdDownTimeNormalized)
     {
         slider.value = holdDownTimeNormalized;

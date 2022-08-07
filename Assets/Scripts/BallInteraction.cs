@@ -6,15 +6,15 @@ public class BallInteraction : MonoBehaviour
     [SerializeField] private Transform ballPossessionPivotTransform;
     private GameObject ball;
     [SerializeField][Range(1f, 20f)] private float elevationMultiplier = 5f;
-    private Player player;
+    [SerializeField] private Player player;
 
     public bool hasPossession;
+
     private Vector3 mouseLookHitPoint;
 
     private void Start()
     {
         ball = GameObject.FindGameObjectWithTag("Ball");
-        player = GetComponent<Player>();
     }
 
     private void OnCollisionEnter(Collision collision)

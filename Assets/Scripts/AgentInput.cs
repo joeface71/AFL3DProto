@@ -3,7 +3,8 @@ using UnityEngine.Events;
 
 public class AgentInput : MonoBehaviour
 {
-    private GameObject player;
+    [SerializeField] private GameObject player;
+    [SerializeField] private bool isActivePlayer = false;
 
     private Camera mainCamera;
 
@@ -21,22 +22,21 @@ public class AgentInput : MonoBehaviour
 
     private float holdDownStartTime;
 
-
     private void Awake()
     {
         mainCamera = Camera.main;
     }
 
-    private void Start()
-    {
-        player = GameObject.FindGameObjectWithTag("Player");
-    }
+
 
     private void Update()
     {
-        GetMovementInput();
-        GetPointerInput();
-        GetKickInput();
+        if (isActivePlayer)
+        {
+            GetMovementInput();
+            GetPointerInput();
+            GetKickInput();
+        }
     }
 
     private void GetKickInput()
@@ -66,8 +66,6 @@ public class AgentInput : MonoBehaviour
                 OnKickButtonHeldDown?.Invoke(CalculateHoldTimeNormalized(holdDownTime));
             }
         }
-
-
     }
 
     private float CalculateHoldTimeNormalized(float holdTime)
@@ -75,9 +73,7 @@ public class AgentInput : MonoBehaviour
         float maxForceHoldDownTime = 2f;
         float holdTimeNormalized = Mathf.Clamp01(holdTime / maxForceHoldDownTime);
         return holdTimeNormalized;
-
     }
-
 
     private void GetPointerInput()
     {
@@ -94,6 +90,4 @@ public class AgentInput : MonoBehaviour
     {
         OnMovementKeyPressed?.Invoke(new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical")));
     }
-
-
 }
