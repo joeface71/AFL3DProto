@@ -39,7 +39,7 @@ public class AgentInput : MonoBehaviour
         }
         else
         {
-            player.GetComponent<AgentMovement>().MoveAgent(Vector3.zero);
+            player.gameObject.GetComponent<AgentMovement>().MoveAgent(Vector3.right * 10);
         }
     }
 

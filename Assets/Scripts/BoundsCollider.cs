@@ -1,0 +1,19 @@
+using UnityEngine;
+
+public class BoundsCollider : MonoBehaviour
+{
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.GetComponent<Ball>() != null)
+        {
+            collision.gameObject.transform.position = new Vector3(0, 1, 0);
+        }
+
+        if (collision.gameObject.GetComponent<Player>() != null)
+        {
+            //not working
+            collision.gameObject.GetComponent<AgentMovement>().MoveAgent(collision.gameObject.transform.position - Vector3.zero);
+
+        }
+    }
+}

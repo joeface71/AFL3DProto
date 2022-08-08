@@ -9,7 +9,7 @@ public abstract class BaseGoal : MonoBehaviour
 
     protected virtual void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "Ball")
+        if (other.gameObject.GetComponent<Ball>() != null)
         {
             TriggerGoal();
         }

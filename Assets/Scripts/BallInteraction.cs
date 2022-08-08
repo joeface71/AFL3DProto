@@ -8,7 +8,7 @@ public class BallInteraction : MonoBehaviour
 
     [SerializeField] private Transform ballPossessionTransform;
     [SerializeField] private Transform ballPossessionPivotTransform;
-    private GameObject ball;
+    private Ball ball;
     [SerializeField][Range(1f, 20f)] private float elevationMultiplier = 5f;
     [SerializeField] private Player player;
 
@@ -18,12 +18,12 @@ public class BallInteraction : MonoBehaviour
 
     private void Start()
     {
-        ball = GameObject.FindGameObjectWithTag("Ball");
+        ball = GameObject.FindObjectOfType<Ball>();
     }
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag == "Ball")
+        if (collision.gameObject.GetComponent<Ball>() != null)
         {
             hasPossession = true;
             ball.transform.parent = ballPossessionTransform;
