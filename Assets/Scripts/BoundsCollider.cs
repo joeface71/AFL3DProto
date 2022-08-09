@@ -11,8 +11,8 @@ public class BoundsCollider : MonoBehaviour
 
         if (collision.gameObject.GetComponent<Player>() != null)
         {
-            //not working
-            collision.gameObject.GetComponent<AgentMovement>().MoveAgent(collision.gameObject.transform.position - Vector3.zero);
+            Debug.Log("Player collision");
+            collision.gameObject.transform.position = Vector3.zero;
 
         }
     }

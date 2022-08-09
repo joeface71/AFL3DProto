@@ -59,7 +59,14 @@ public class AgentMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        rb.velocity = currentVelocity * movementDirection.normalized;
+        if (player.GetComponent<AgentInput>().isActivePlayer)
+        {
+            rb.velocity = currentVelocity * movementDirection.normalized;
+        }
+        else
+        {
+            rb.velocity = Vector3.zero;
+        }
     }
 
 
